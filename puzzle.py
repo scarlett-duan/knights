@@ -82,11 +82,13 @@ def main():
     for puzzle, knowledge in puzzles:
         print(puzzle)
         if len(knowledge.conjuncts) == 0:
-            print("    Not yet implemented.")
+            print(f"    Not yet implemented. Could not find knowledge base for {puzzle}. Missing 'conjuncts'.")
         else:
             for symbol in symbols:
                 if model_check(knowledge, symbol):
-                    print(f"    {symbol}")
+                    print(f"    {symbol} is true")
+                else:
+                    print(f"    {symbol} is false or unknown")
 
 
 if __name__ == "__main__":
